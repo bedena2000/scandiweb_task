@@ -1,0 +1,18 @@
+.CardListWrapper {
+  margin-top: 80px;
+  font-family: "Raleway", sans-serif;
+}
+
+.CardListTitle {
+  font-size: 42px;
+  color: #1D1F22;
+}
+
+.cardListArrayWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 103px;
+  column-gap: 40px;
+}
+

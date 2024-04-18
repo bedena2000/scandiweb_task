@@ -1,0 +1,10 @@
+.cardItemImage {
+  width: 355px;
+  height: 330px;
+}
+
+.cardItemImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
