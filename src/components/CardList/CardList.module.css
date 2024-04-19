@@ -14,5 +14,7 @@
   grid-template-rows: repeat(3, 1fr);
   row-gap: 103px;
   column-gap: 40px;
+  margin-top: 119px;
 }
+
 
