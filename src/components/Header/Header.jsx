@@ -44,9 +44,9 @@ class Header extends Component {
           </Link>
         </div>
 
-        <div className={`${styles['headerIcon']}`}>
+        <Link to="/" className={`${styles['headerIcon']}`}>
             <img src={MainLogo}  alt="BrandIcon" />
-        </div>
+        </Link>
 
         <div className={`${styles['cartIcon']}`}>
             <img src={CartLogo} alt="cartLogo" />

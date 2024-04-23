@@ -1,0 +1,102 @@
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  font-family: "Raleway";
+  color: #1d1f22;
+}
+
+.itemInfo__name {
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom: 32px;
+}
+
+.itemInfo__priceWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itemInfo__priceTitle {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.itemInfo__price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.itemInfo__description {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+.itemInfo__button {
+  color: #ffffff;
+  font-size: 16px;
+  background-color: #5ece7b;
+  width: 100%;
+  padding: 16px 0px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.itemInfo_sizeWrapper__size {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.itemInfo_sizeWrapper-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 33px;
+}
+
+.itemInfo_sizeWrapper-box__item {
+  padding: 13px 22px;
+  border: 1px solid #1d1f22;
+  font-size: 16px;
+  font-family: "Source Sans 3", sans-serif;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.itemInfo_sizeWrapper-box__item:hover {
+  background-color: #1d1f22;
+  color: white;
+}
+
+.itemInfo_colorWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemInfo_colorWrappper__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.itemInfo_colorWrapper_box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 27px;
+}
+
+.itemInfo_colorWrapper_box__item {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.itemInfo_colorWrapper_box__item:hover {
+  border: 1px solid #5ece7b;
+}

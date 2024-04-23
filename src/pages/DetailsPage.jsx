@@ -4,6 +4,7 @@ import MainContext from "../context";
 import { data } from "../data/data";
 import styles from "./DetailsPage.module.css";
 import Slider from "../components/Slider/Slider";
+import ItemInfo from "../components/ItemInfo/ItemInfo";
 
 class DetailsPage extends Component {
   static contextType = MainContext;
@@ -38,6 +39,7 @@ class DetailsPage extends Component {
   }
 
   render() {
+    const currentSelectedElementInfo = this.state.currentSelectedElementInfo;
     if (!this.context.stateData.currentSelectedItemId) {
       return (
         <div>
@@ -58,6 +60,7 @@ class DetailsPage extends Component {
               this.state.currentSelectedElementInfo.options?.images
             }
           />
+          <ItemInfo item={currentSelectedElementInfo} />
         </div>
       </div>
     );

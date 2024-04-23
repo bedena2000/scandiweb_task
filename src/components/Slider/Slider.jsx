@@ -16,7 +16,6 @@ class Slider extends Component {
 
   render() {
     const imageList = this.props.sliderLeftImages;
-
     const changeSliderElement = (leftOrRight) => {
       if (leftOrRight === "left") {
         if (this.state.currentSelectedImageNumber - 1 < 0) {
