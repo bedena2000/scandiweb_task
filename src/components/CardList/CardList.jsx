@@ -24,6 +24,7 @@ class CardList extends Component {
               cardTitle={item.name}
               cardPrice={item.prices[0].amount}
               key={item.id} 
+              cardId={item.id}
               />)
           }
         </div>
