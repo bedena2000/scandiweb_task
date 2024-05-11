@@ -1,0 +1,30 @@
+.sizeContainer {
+  margin-bottom: 33px;
+}
+
+.sizeTitle {
+  color: #1D1F22;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.sizeWrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.sizeItem {
+  border: 1px  solid #1D1F22;
+  padding: 14px 22px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.sizeItem:hover {
+  background-color: #1D1F22;
+  color: white;
+}

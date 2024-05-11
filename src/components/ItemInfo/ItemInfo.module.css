@@ -100,3 +100,35 @@
 .itemInfo_colorWrapper_box__item:hover {
   border: 1px solid #5ece7b;
 }
+
+.itemAnotherInfoWrapper {
+  border: 1px dotted grey;
+  padding: 12px;
+  margin-bottom: 33px;
+}
+
+.itemAnotherTitle {
+  font-weight: bold;
+  font-size: 18px;
+  color: #1d1f22;
+  margin-bottom: 12px;
+}
+
+.itemInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.anotherItem {
+  cursor: pointer;
+  border: 0.5px solid black;
+  padding: 6px;
+}
+
+.anotherItemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

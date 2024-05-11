@@ -9,8 +9,7 @@ class CardList extends Component {
   }
 
   render() {
-    const products = this.props.cardListArray.data.products;
-    
+    const products = this.props.cardListArray;
     return (
       <div className={`${styles["CardListWrapper"]}`}>
         <p className={`${styles["CardListTitle"]}`}>
@@ -20,7 +19,7 @@ class CardList extends Component {
         <div className={`${styles["cardListArrayWrapper"]}`}>
           {
             products.map(item => <Card 
-              cardImage={item.gallery[0]}
+              cardImage={item.gallery[0].image}
               cardTitle={item.name}
               cardPrice={item.prices[0].amount}
               key={item.id} 

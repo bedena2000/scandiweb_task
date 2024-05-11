@@ -1,10 +1,11 @@
 import { Component } from "react";
 import Header from "../components/Header/Header";
 import MainContext from "../context";
-import { data } from "../data/data";
 import styles from "./DetailsPage.module.css";
 import Slider from "../components/Slider/Slider";
 import ItemInfo from "../components/ItemInfo/ItemInfo";
+import { Query } from "@apollo/client/react/components";
+import gql from "graphql-tag";
 
 class DetailsPage extends Component {
   static contextType = MainContext;
@@ -13,34 +14,42 @@ class DetailsPage extends Component {
     super(props);
     this.state = {
       currentSelectedElementInfo: {},
+      currentQuery: ``,
     };
   }
 
   componentDidMount() {
     if (this.context.stateData.currentSelectedItemId) {
-      const product = data.data.products;
-      const result = product.find(
-        (item) => item.id === this.context.stateData.currentSelectedItemId
-      );
-      const resultForState = {
-        name: result.name,
-        description: result.description,
-        id: result.id,
-        options: {
-          images: result.gallery,
-          price: result.prices[0].amount,
-          attributes: result.attributes,
-        },
-      };
+      const currentId = this.context.stateData.currentSelectedItemId;
       this.setState({
-        currentSelectedElementInfo: resultForState,
+        currentQuery: gql`
+          query {
+            product (id: ${currentId}) {
+              name
+              id
+              description
+              gallery {
+                image
+              }
+              prices {
+                amount
+              }
+              attributes {
+                idTitle
+                items {
+                  idTitle,
+                  displayValue
+                }
+              }
+            }
+          }
+        `,
       });
     }
   }
 
   render() {
-    const currentSelectedElementInfo = this.state.currentSelectedElementInfo;
-    if (!this.context.stateData.currentSelectedItemId) {
+    if (!this.state.currentQuery) {
       return (
         <div>
           <Header />
@@ -51,19 +60,35 @@ class DetailsPage extends Component {
       );
     }
 
-    return (
-      <div>
-        <Header />
-        <div className={`${styles["detailsPageItemInfo"]}`}>
-          <Slider
-            sliderLeftImages={
-              this.state.currentSelectedElementInfo.options?.images
+    if (this.state.currentSelectedElementInfo) {
+      return (
+        <Query query={this.state.currentQuery}>
+          {({ loading, error, data }) => {
+            if (loading) <div>loading...</div>;
+            if (error) <div>something went wrong. please try again</div>;
+            if (data) {
+              const images = data.product.gallery.map((item) => item.image);
+              const options = {
+                description: data.product.description,
+                attributes: data.product.attributes,
+                name: data.product.name,
+                price: data.product.prices[0].amount,
+              };
+              return (
+                <div>
+                  <Header />
+                  <div className={`${styles["detailsPageItemInfo"]}`}>
+                    <Slider sliderLeftImages={images} />
+                    <ItemInfo item={options} />
+                  </div>
+                </div>
+              );
             }
-          />
-          <ItemInfo item={currentSelectedElementInfo} />
-        </div>
-      </div>
-    );
+            return <div>loading...</div>;
+          }}
+        </Query>
+      );
+    }
   }
 }
 

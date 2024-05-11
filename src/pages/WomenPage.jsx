@@ -1,15 +1,40 @@
 import { Component } from "react";
 import Header from "../components/Header/Header";
 import CardList from "../components/CardList/CardList";
-import { data } from "../data/data";
+// import { data } from "../data/data";
+import { Query } from "@apollo/client/react/components";
+import gql from "graphql-tag";
+
+const getProducts = gql`
+  query {
+    products {
+      id
+      name
+      gallery {
+        image
+      }
+      prices {
+        amount
+      }
+    }
+  }
+`;
 
 class WomenPage extends Component {
   render() {
     return (
-      <div>
-        <Header />
-        <CardList cardListTitle="Women" cardListArray={data} />
-      </div>
+      <Query query={getProducts}>
+        {({ loading, error, data }) => {
+          if (loading) return <h1>Loading data...</h1>;
+          if (error) return <h1>Something went wrong. please try again</h1>;
+          return (
+            <div>
+              <Header />
+              <CardList cardListTitle="Women" cardListArray={data.products} />
+            </div>
+          );
+        }}
+      </Query>
     );
   }
 }

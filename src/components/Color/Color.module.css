@@ -1,0 +1,22 @@
+.colorContainer {
+  margin-bottom: 33px;
+}
+
+.colorTitle {
+  color: #1d1f22;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.colorWrapper {
+  display: flex;
+  gap: 8px;
+  
+}
+
+.colorItem {
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
