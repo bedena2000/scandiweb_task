@@ -1,16 +1,23 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import MainLogo from '../../assets/icons/brand_icon.svg';
-import CartLogo from '../../assets/icons/cart_icon.svg';
+import MainLogo from "../../assets/icons/brand_icon.svg";
+import CartLogo from "../../assets/icons/cart_icon.svg";
+import MainContext from "../../context";
 
 class Header extends Component {
+  static contextType = MainContext;
+
   render() {
     const url = window.location.pathname;
 
     function isActive(pathToCheck) {
       return url === pathToCheck;
     }
+
+    const seeCart = () => {
+      console.log(this.context);
+    };
 
     return (
       <div className={styles["headerWrapper"]}>
@@ -20,7 +27,9 @@ class Header extends Component {
               color: isActive("/") ? "#5ECE7B" : null,
             }}
             to="/"
-            className={`${isActive('/') ? 'headerLinkActive' : ''} ${styles["headerLink"]}`}
+            className={`${isActive("/") ? "headerLinkActive" : ""} ${
+              styles["headerLink"]
+            }`}
           >
             Women
           </Link>
@@ -29,7 +38,9 @@ class Header extends Component {
               color: isActive("/men") ? "#5ECE7B" : null,
             }}
             to="/men"
-            className={`${isActive('/men') ? 'headerLinkActive' : ''} ${styles["headerLink"]}`}
+            className={`${isActive("/men") ? "headerLinkActive" : ""} ${
+              styles["headerLink"]
+            }`}
           >
             Men
           </Link>
@@ -38,18 +49,20 @@ class Header extends Component {
               color: isActive("/kids") ? "#5ECE7B" : null,
             }}
             to="/kids"
-            className={`${isActive('/kids') ? 'headerLinkActive' : ''} ${styles["headerLink"]}`}
+            className={`${isActive("/kids") ? "headerLinkActive" : ""} ${
+              styles["headerLink"]
+            }`}
           >
             Kids
           </Link>
         </div>
 
-        <Link to="/" className={`${styles['headerIcon']}`}>
-            <img src={MainLogo}  alt="BrandIcon" />
+        <Link to="/" className={`${styles["headerIcon"]}`}>
+          <img src={MainLogo} alt="BrandIcon" />
         </Link>
 
-        <div className={`${styles['cartIcon']}`}>
-            <img src={CartLogo} alt="cartLogo" />
+        <div onClick={seeCart} className={`${styles["cartIcon"]}`}>
+          <img src={CartLogo} alt="cartLogo" />
         </div>
       </div>
     );

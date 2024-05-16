@@ -1,6 +1,7 @@
 .CardListWrapper {
   margin-top: 80px;
   font-family: "Raleway", sans-serif;
+  position: relative;
 }
 
 .CardListTitle {

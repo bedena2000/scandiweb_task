@@ -1,4 +1,5 @@
 import { Component } from "react";
+import styles from "./WomenPage.module.css";
 import Header from "../components/Header/Header";
 import CardList from "../components/CardList/CardList";
 // import { data } from "../data/data";
@@ -28,7 +29,7 @@ class WomenPage extends Component {
           if (loading) return <h1>Loading data...</h1>;
           if (error) return <h1>Something went wrong. please try again</h1>;
           return (
-            <div>
+            <div className={`${styles["WomenPageWrapper"]}`}>
               <Header />
               <CardList cardListTitle="Women" cardListArray={data.products} />
             </div>

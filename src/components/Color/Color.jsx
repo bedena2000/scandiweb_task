@@ -5,7 +5,6 @@ import styles from "./Color.module.css";
 class Color extends Component {
   render() {
     const colorList = this.props.colorList;
-    console.log(this.props);
     return (
       <div className={`${styles["colorContainer"]}`}>
         <p className={`${styles["colorTitle"]}`}>COLOR:</p>

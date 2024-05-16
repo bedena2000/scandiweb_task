@@ -4,8 +4,6 @@ import styles from "./Size.module.css";
 
 class Size extends Component {
   render() {
-    console.log(this.props);
-    console.log(this.props.options?.Size);
     return (
       <div className={`${styles["sizeContainer"]}`}>
         <p className={`${styles["sizeTitle"]}`}>SIZE:</p>

@@ -17,15 +17,15 @@ class CardList extends Component {
         </p>
 
         <div className={`${styles["cardListArrayWrapper"]}`}>
-          {
-            products.map(item => <Card 
+          {products.map((item) => (
+            <Card
               cardImage={item.gallery[0].image}
               cardTitle={item.name}
               cardPrice={item.prices[0].amount}
-              key={item.id} 
+              key={item.id}
               cardId={item.id}
-              />)
-          }
+            />
+          ))}
         </div>
       </div>
     );

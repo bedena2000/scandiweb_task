@@ -24,11 +24,13 @@ class ItemInfo extends Component {
         options[item["idTitle"]] = item.items[0].idTitle;
       });
 
+
       this.setState({
         CurrentSettings: {
           name: this.props.item.name,
           description: this.props.item.description,
           options: options,
+          id: this.props.item.id,
         },
       });
     }
@@ -36,12 +38,17 @@ class ItemInfo extends Component {
 
   render() {
     const addToCart = () => {
-      console.log(this.state);
-    }
+      const { CurrentSettings } = this.state;
+      this.context.addCartItem({
+        id: CurrentSettings.id,
+        options: CurrentSettings.options
+      });
+    };
 
     const changeCurrentSettings = (optionKey, optionValue) => {
       this.setState((prevState) => ({
         CurrentSettings: {
+          ...prevState.CurrentSettings,
           options: {
             ...prevState.CurrentSettings.options,
             [optionKey]: optionValue,
@@ -100,7 +107,6 @@ class ItemInfo extends Component {
                   </p>
                   <div className={`${styles["anotherItemsContainer"]}`}>
                     {items.map((item) => {
-                      console.log(item);
                       return (
                         <div
                           onClick={() =>

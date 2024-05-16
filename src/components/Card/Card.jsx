@@ -17,9 +17,7 @@ class Card extends Component {
   }
 
   render() {
-    const addToCardHandler = () => {
-      console.log("add to cart is being activated");
-    };
+    const addToCardHandler = () => {};
 
     const cardHandler = () => {
       this.context.helperFunctions.changeSelectedId(this.props.cardId);
