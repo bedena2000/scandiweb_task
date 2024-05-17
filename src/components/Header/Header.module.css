@@ -25,4 +25,20 @@
 
 .cartIcon {
   cursor: pointer;
+  position: relative;
+}
+
+.cartItemsNumber {
+  border-radius: 100%;
+  background-color: #1D1F22;
+  color: white;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 11px;
+  top: -8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

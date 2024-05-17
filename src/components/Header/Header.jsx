@@ -16,7 +16,8 @@ class Header extends Component {
     }
 
     const seeCart = () => {
-      console.log(this.context);
+      this.context.changeModal();
+      console.log("card clicked");
     };
 
     return (
@@ -63,6 +64,12 @@ class Header extends Component {
 
         <div onClick={seeCart} className={`${styles["cartIcon"]}`}>
           <img src={CartLogo} alt="cartLogo" />
+
+          {this.context.stateData.cartItems.length > 0 ? (
+            <p className={`${styles["cartItemsNumber"]}`}>
+              {this.context.stateData.cartItems.length}
+            </p>
+          ) : null}
         </div>
       </div>
     );

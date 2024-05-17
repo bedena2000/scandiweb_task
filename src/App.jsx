@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       currentSelectedItemId: null,
       cartItems: [],
+      isModal: false,
     };
   }
 
@@ -44,6 +45,12 @@ class App extends Component {
       }
     };
 
+    const changeModal = () =>
+      this.setState({
+        ...this.state,
+        isModal: !this.state.isModal,
+      });
+
     return (
       <div className="container">
         <MainContextProvider
@@ -53,6 +60,7 @@ class App extends Component {
               changeSelectedId: changeCurrentSelectedItemId,
             },
             addCartItem,
+            changeModal,
           }}
         >
           <Routes>
