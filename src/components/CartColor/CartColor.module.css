@@ -1,0 +1,21 @@
+.cartColor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.cartColor-item-wrapper {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid blue;
+}
+
+.cartColor-item-center {
+  width: 16px;
+  height: 16px;
+}

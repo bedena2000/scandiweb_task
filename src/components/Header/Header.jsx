@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 import MainLogo from "../../assets/icons/brand_icon.svg";
 import CartLogo from "../../assets/icons/cart_icon.svg";
 import MainContext from "../../context";
+import CartItems from "../CartItems/CartItems";
 
 class Header extends Component {
   static contextType = MainContext;
@@ -70,6 +71,9 @@ class Header extends Component {
               {this.context.stateData.cartItems.length}
             </p>
           ) : null}
+          {
+            this.context.stateData.isModal && <CartItems />
+          }
         </div>
       </div>
     );

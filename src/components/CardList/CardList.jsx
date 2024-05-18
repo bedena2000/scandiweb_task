@@ -2,7 +2,7 @@
 import { Component } from "react";
 import styles from "./CardList.module.css";
 import Card from "../Card/Card";
-import Background from "../Background/Background";
+
 
 class CardList extends Component {
   constructor(props) {

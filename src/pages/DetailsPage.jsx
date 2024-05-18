@@ -73,7 +73,8 @@ class DetailsPage extends Component {
                 attributes: data.product.attributes,
                 name: data.product.name,
                 price: data.product.prices[0].amount,
-                id: data.product.id
+                id: data.product.id,
+                images: data.product.gallery
               };
               return (
                 <div>

@@ -1,0 +1,16 @@
+.cartItem-container {
+  font-family: "Raleway";
+}
+
+.cartItem-info-name {
+  color: #1d1f22;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.cartItem-info-price {
+  color: #1d1f22;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+}

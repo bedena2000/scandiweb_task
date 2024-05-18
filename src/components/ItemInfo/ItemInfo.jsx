@@ -24,24 +24,42 @@ class ItemInfo extends Component {
         options[item["idTitle"]] = item.items[0].idTitle;
       });
 
+      console.log(this.props.item);
+      let colors = [];
+      this.props.item.attributes.map(item => {
+        if(item.idTitle === "Color") {
+          const colorsArray = item.items.map(item => item.displayValue);
+          colors = colorsArray;
+        }
+      });
+      console.log(colors);
+
 
       this.setState({
         CurrentSettings: {
           name: this.props.item.name,
+          price: this.props.item.price,
           description: this.props.item.description,
           options: options,
           id: this.props.item.id,
+          image: this.props.item.images[0].image,
+          colors: colors
         },
       });
     }
   }
 
   render() {
+    console.log(this.state);
     const addToCart = () => {
       const { CurrentSettings } = this.state;
       this.context.addCartItem({
         id: CurrentSettings.id,
-        options: CurrentSettings.options
+        options: CurrentSettings.options,
+        name: CurrentSettings.name,
+        price: CurrentSettings.price,
+        image: CurrentSettings.image,
+        colors: CurrentSettings.colors
       });
     };
 
