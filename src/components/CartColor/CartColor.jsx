@@ -9,18 +9,24 @@ class CartColor extends Component {
     console.log(allColors);
     return (
       <div className={`${styles["cartColor-container"]}`}>
-        {/* {this.allColors.map((item) => {
-          return (
-            <div key={item} className={`${styles["cartColor-item-wrapper"]}`}>
-              <div
-                style={{
-                  background: item,
-                }}
-                className={`${styles["cartColor-item-center"]}`}
-              ></div>
-            </div>
-          );
-        })} */}
+        <p className={`${styles["cartColor-title"]}`}>Color:</p>
+        <div className={`${styles["cartColor-wrapper"]}`}>
+          {allColors.map((item) => {
+            return (
+              <div key={item} className={`${styles["cartColor-item"]}`}>
+                <div
+                  className={`${styles["cartColor-center"]}`}
+                  style={{
+                    background: item,
+                  }}
+                ></div>
+                <div style={{
+                  border: selectedColor === item ? '1px solid #5ECE7B' : null
+                }} className={`${styles["cartColor-border"]}`}></div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
