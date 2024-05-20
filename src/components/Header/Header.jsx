@@ -63,17 +63,17 @@ class Header extends Component {
           <img src={MainLogo} alt="BrandIcon" />
         </Link>
 
-        <div onClick={seeCart} className={`${styles["cartIcon"]}`}>
-          <img src={CartLogo} alt="cartLogo" />
+        <div className={`${styles["cartIcon"]}`}>
+          <div onClick={seeCart}>
+            <img src={CartLogo} alt="cartLogo" />
 
-          {this.context.stateData.cartItems.length > 0 ? (
-            <p className={`${styles["cartItemsNumber"]}`}>
-              {this.context.stateData.cartItems.length}
-            </p>
-          ) : null}
-          {
-            this.context.stateData.isModal && <CartItems />
-          }
+            {this.context.stateData.cartItems.length > 0 ? (
+              <p className={`${styles["cartItemsNumber"]}`}>
+                {this.context.stateData.cartItems.length}
+              </p>
+            ) : null}
+          </div>
+          {this.context.stateData.isModal && <CartItems />}
         </div>
       </div>
     );

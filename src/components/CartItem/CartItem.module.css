@@ -7,6 +7,19 @@
   align-items: center;
 }
 
+.cartItem-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.cartItem-info-left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
 .cartItem-info-name {
   color: #1d1f22;
   font-size: 18px;
@@ -42,3 +55,13 @@
   height: 100%;
   object-fit: cover;
 }
+
+.cartItem-amount {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+

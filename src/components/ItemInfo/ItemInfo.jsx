@@ -26,14 +26,13 @@ class ItemInfo extends Component {
 
       console.log(this.props.item);
       let colors = [];
-      this.props.item.attributes.map(item => {
-        if(item.idTitle === "Color") {
-          const colorsArray = item.items.map(item => item.displayValue);
+      this.props.item.attributes.map((item) => {
+        if (item.idTitle === "Color") {
+          const colorsArray = item.items.map((item) => item.displayValue);
           colors = colorsArray;
         }
       });
       console.log(colors);
-
 
       this.setState({
         CurrentSettings: {
@@ -43,7 +42,8 @@ class ItemInfo extends Component {
           options: options,
           id: this.props.item.id,
           image: this.props.item.images[0].image,
-          colors: colors
+          colors: colors,
+          amount: this.props.item.amount,
         },
       });
     }
@@ -59,7 +59,8 @@ class ItemInfo extends Component {
         name: CurrentSettings.name,
         price: CurrentSettings.price,
         image: CurrentSettings.image,
-        colors: CurrentSettings.colors
+        colors: CurrentSettings.colors,
+        amount: CurrentSettings.amount,
       });
     };
 
