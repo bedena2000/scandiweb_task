@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { Component } from "react";
 import styles from "./CartItems.module.css";
 import MainContext from "../../context";
 import { client } from "../../main";
 import CartItem from "../CartItem/CartItem";
 import { checkObjects } from "../../helpers";
+import gql from "graphql-tag";
 
 class CartItems extends Component {
   static contextType = MainContext;
@@ -24,13 +26,15 @@ class CartItems extends Component {
 
   render() {
     const changeAmount = (item, changeSymbol) => {
-      if(changeSymbol === "-" && item.amount === 1) {
+      if (changeSymbol === "-" && item.amount === 1) {
         this.setState({
-          carts: this.state.carts.filter(cartItem => !checkObjects(cartItem, item))
-        })
+          carts: this.state.carts.filter(
+            (cartItem) => !checkObjects(cartItem, item)
+          ),
+        });
         return;
       }
-      
+
       const newState = this.state.carts.map((cartItem) => {
         if (checkObjects(cartItem, item)) {
           if (changeSymbol === "+") {
@@ -50,11 +54,44 @@ class CartItems extends Component {
           return cartItem;
         }
       });
+      this.context.newCartItems(newState);
       this.setState({
         carts: newState,
       });
     };
-    console.log(this.state);
+
+    const saveCartItems = async () => {
+      const { carts } = this.state;
+      const result = carts.map((item) => {
+        let settings = "";
+        for (const [key, value] of Object.entries(item.options)) {
+          if (key !== "Size" && key !== "value") {
+            settings = settings + `${key}:${value},`;
+          }
+        }
+        const final = {
+          product_id: item.id,
+          color: item.options.Color || "",
+          size: item.options.Size || "",
+          settings,
+        };
+        return final;
+      });
+      result.map(async (item) => {
+        await client.mutate({
+          mutation: gql`
+            mutation {
+              addCartItem(product_id: ${item.product_id}, size: "${item.size}", color: "${item.color}", settings: "${item.settings}")
+            }
+          `,
+        });
+      });
+
+      this.setState({
+        carts: [],
+      });
+      this.context.newCartItems([]);
+    };
 
     return (
       <div className={`${styles["container"]}`}>
@@ -77,12 +114,17 @@ class CartItems extends Component {
           <p>Total:</p>
           <p>
             $
-            {this.state.carts.reduce(
-              (acc, val) => acc + Number(val.price * val.amount),
-              0
-            ).toFixed(2)}
+            {this.state.carts
+              .reduce((acc, val) => acc + Number(val.price * val.amount), 0)
+              .toFixed(2)}
           </p>
         </div>
+        <button
+          onClick={saveCartItems}
+          className={`${styles["place-order-button"]}`}
+        >
+          PLACE ORDER
+        </button>
       </div>
     );
   }

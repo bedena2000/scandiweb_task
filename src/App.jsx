@@ -45,6 +45,13 @@ class App extends Component {
       }
     };
 
+    const newCartItems = (newList) => {
+      this.setState({
+        ...this.state,
+        cartItems: newList,
+      });
+    };
+
     const changeModal = () =>
       this.setState({
         ...this.state,
@@ -61,6 +68,7 @@ class App extends Component {
             },
             addCartItem,
             changeModal,
+            newCartItems,
           }}
         >
           <Routes>

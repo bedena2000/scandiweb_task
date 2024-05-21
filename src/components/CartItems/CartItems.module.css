@@ -33,3 +33,21 @@
   font-weight: bold;
   margin-top: 41px;
 }
+
+.place-order-button {
+  background-color: #5ECE7B;
+  color: white;
+  font-size: 14px;
+  font-family: "Raleway";
+  font-weight: bold;
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  margin-top: 32px;
+  cursor: pointer;
+}
