@@ -22,7 +22,10 @@ class CartItem extends Component {
     console.log(item);
     return (
       <div>
-        <div className={`${styles["cartItem-container"]}`}>
+        <div
+          data-testid={`cart-item-attribute-${item.name}`}
+          className={`${styles["cartItem-container"]}`}
+        >
           <div className={`${styles["cartItem-info"]}`}>
             <div className={`${styles["cartItem-info-left"]}`}>
               <div>
@@ -49,6 +52,7 @@ class CartItem extends Component {
                       <div
                         key={item.info.title}
                         className={`${styles["cartItem-info-options__item"]}`}
+                        data-testid={`cart-item-attribute-${item.info.title}`}
                       >
                         <p
                           className={`${styles["cartItem-info-options__item--title"]}`}
@@ -61,10 +65,21 @@ class CartItem extends Component {
                   })}
                 </div>
               </div>
-              <div >
-                <img onClick={() => this.props.changeAmount(item, '+')} className={`${styles["cartItem-amount"]}`} src={PlusIcon} alt="plusIcon" />
-                <p>{item.amount}</p>
-                <img onClick={() => this.props.changeAmount(item, '-')} src={MinusIcon} alt="MinusIcon" />
+              <div>
+                <img
+                  onClick={() => this.props.changeAmount(item, "+")}
+                  className={`${styles["cartItem-amount"]}`}
+                  src={PlusIcon}
+                  alt="plusIcon"
+                  data-testid="cart-item-amount-increase"
+                />
+                <p data-testid="cart-item-amount">{item.amount}</p>
+                <img
+                  onClick={() => this.props.changeAmount(item, "-")}
+                  src={MinusIcon}
+                  alt="MinusIcon"
+                  data-testid="cart-item-amount-decrease"
+                />
               </div>
             </div>
             <div className={`${styles["cartItem-info-right"]}`}>

@@ -34,6 +34,7 @@ class Card extends Component {
         onMouseLeave={() => this.setState({ isHover: false })}
         className={`${styles["cardItemWrapper"]}`}
         onClick={cardHandler}
+        data-testid={`product-${this.props.cardTitle}`}
       >
         <div className={`${styles["cardItemImage"]}`}>
           <img alt="cardItem" src={this.props.cardImage} />

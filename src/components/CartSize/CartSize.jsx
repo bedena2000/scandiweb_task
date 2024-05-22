@@ -29,8 +29,17 @@ class CartSize extends Component {
   render() {
     const sizeOption = this.props.sizeOption;
     return (
-      <div className={`${styles["cartSize-container"]}`}>
+      <div
+        data-testid="cart-item-attribute-size"
+        className={`${styles["cartSize-container"]}`}
+      >
         {cartSizeArray.map((item) => {
+          const selectedData =
+            sizeOption === item.content
+              ? {
+                  [`data-testid`]: `cart-item-attribute-${item.content}-selected`,
+                }
+              : {};
           return (
             <div
               style={{
@@ -39,6 +48,7 @@ class CartSize extends Component {
               }}
               key={item.id}
               className={`${styles["cartSize-item"]}`}
+              {...selectedData}
             >
               {item.title}
             </div>

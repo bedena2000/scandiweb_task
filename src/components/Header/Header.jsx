@@ -32,6 +32,8 @@ class Header extends Component {
             className={`${isActive("/") ? "headerLinkActive" : ""} ${
               styles["headerLink"]
             }`}
+            data-testid="category-link"
+            {...(isActive("/") && { "data-testid": "active-category-link" })}
           >
             Women
           </Link>
@@ -43,6 +45,8 @@ class Header extends Component {
             className={`${isActive("/men") ? "headerLinkActive" : ""} ${
               styles["headerLink"]
             }`}
+            data-testid="category-link"
+            {...(isActive("/men") && { "data-testid": "active-category-link" })}
           >
             Men
           </Link>
@@ -54,6 +58,10 @@ class Header extends Component {
             className={`${isActive("/kids") ? "headerLinkActive" : ""} ${
               styles["headerLink"]
             }`}
+            data-testid="category-link"
+            {...(isActive("/kids") && {
+              "data-testid": "active-category-link",
+            })}
           >
             Kids
           </Link>
@@ -63,7 +71,7 @@ class Header extends Component {
           <img src={MainLogo} alt="BrandIcon" />
         </Link>
 
-        <div className={`${styles["cartIcon"]}`}>
+        <div data-testid="cart-btn" className={`${styles["cartIcon"]}`}>
           <div onClick={seeCart}>
             <img src={CartLogo} alt="cartLogo" />
 

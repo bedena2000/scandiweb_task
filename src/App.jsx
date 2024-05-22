@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import { MainContextProvider } from "./context";
+import Background from "./components/Background/Background";
 
 import WomenPage from "./pages/WomenPage";
 import KidsPage from "./pages/KidsPage";
@@ -16,6 +17,24 @@ class App extends Component {
       cartItems: [],
       isModal: false,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isModal !== this.state.isModal) {
+      this.updateBodyOverflow();
+    }
+  }
+
+  updateBodyOverflow() {
+    if (this.state.isModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }
+
+  componentWillUnmount() {
+    document.body.style.overflow = "auto";
   }
 
   render() {
@@ -71,13 +90,14 @@ class App extends Component {
             newCartItems,
           }}
         >
+          {this.state.isModal ? <Background /> : null}
+
           <Routes>
             <Route path="/" element={<WomenPage />} />
             <Route path="/men" element={<MenPage />} />
             <Route path="/kids" element={<KidsPage />} />
             <Route path="/kids" element={<KidsPage />} />
             <Route path="/details" element={<DetailsPage />} />
-
             {/* Error Page */}
             <Route path="*" element={<ErrorPage />} />
           </Routes>

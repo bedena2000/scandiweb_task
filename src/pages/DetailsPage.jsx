@@ -67,6 +67,7 @@ class DetailsPage extends Component {
             if (loading) <div>loading...</div>;
             if (error) <div>something went wrong. please try again</div>;
             if (data) {
+              console.log(data);
               const images = data.product.gallery.map((item) => item.image);
               const options = {
                 description: data.product.description,
@@ -80,7 +81,10 @@ class DetailsPage extends Component {
               return (
                 <div>
                   <Header />
-                  <div className={`${styles["detailsPageItemInfo"]}`}>
+                  <div
+                    data-testid={`product-attribute-${data.product.name}`}
+                    className={`${styles["detailsPageItemInfo"]}`}
+                  >
                     <Slider sliderLeftImages={images} />
                     <ItemInfo item={options} />
                   </div>

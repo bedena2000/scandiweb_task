@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Component } from "react";
 import styles from "./CartColor.module.css";
 
@@ -8,7 +9,7 @@ class CartColor extends Component {
     console.log(selectedColor);
     console.log(allColors);
     return (
-      <div className={`${styles["cartColor-container"]}`}>
+      <div data-testid='cart-item-attribute-color' className={`${styles["cartColor-container"]}`}>
         <p className={`${styles["cartColor-title"]}`}>Color:</p>
         <div className={`${styles["cartColor-wrapper"]}`}>
           {allColors.map((item) => {

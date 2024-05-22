@@ -93,22 +93,36 @@ class CartItems extends Component {
       this.context.newCartItems([]);
     };
 
+    console.log(this.state.carts);
+
     return (
       <div className={`${styles["container"]}`}>
         <div className={`${styles["title-container"]}`}>
           <p className={`${styles["title"]}`}>My Bag,</p>
-          <p className={`${styles["title-content"]}`}>
-            {this.state.carts.length} items
+          <p data-testid="cart-total" className={`${styles["title-content"]}`}>
+            {this.state.carts.length === 1
+              ? `${this.state.carts.length} item`
+              : this.state.carts.length > 1
+              ? `${this.state.carts.length} items`
+              : null}
           </p>
         </div>
         <div className={`${styles["cartList"]}`}>
-          {this.state.carts.map((item) => (
-            <CartItem
-              key={item.options}
-              item={item}
-              changeAmount={changeAmount}
-            />
-          ))}
+          {this.state.carts.map((item) => {
+            const optionsString = Object.entries(item.options)
+              .map(([key, value]) => `${key}:${value}`)
+              .join(";");
+            const uniqueKey = `${item.id}-${optionsString}`;
+            console.log(uniqueKey);
+
+            return (
+              <CartItem
+                key={uniqueKey}
+                item={item}
+                changeAmount={changeAmount}
+              />
+            );
+          })}
         </div>
         <div className={`${styles["totalPrice"]}`}>
           <p>Total:</p>

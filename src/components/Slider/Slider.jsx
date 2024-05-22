@@ -43,7 +43,7 @@ class Slider extends Component {
     };
 
     return (
-      <div className={`${styles["slider"]}`}>
+      <div data-testid="product-gallery" className={`${styles["slider"]}`}>
         <div className={`${styles["sliderLeft"]}`}>
           {imageList
             ? imageList.map((item, index) => {

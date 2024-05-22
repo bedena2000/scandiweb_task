@@ -161,10 +161,15 @@ class ItemInfo extends Component {
             <p className={`${styles["itemInfo__priceTitle"]}`}>Price</p>
             <p className={`${styles["itemInfo__price"]}`}>${item.price}</p>
           </div>
-          <a onClick={addToCart} className={`${styles["itemInfo__button"]}`}>
+          <a
+            data-testid="add-to-cart"
+            onClick={addToCart}
+            className={`${styles["itemInfo__button"]}`}
+          >
             ADD TO CART
           </a>
           <p
+            data-testid="product-description"
             dangerouslySetInnerHTML={{ __html: item.description }}
             className={`${styles["itemInfo__description"]}`}
           ></p>
